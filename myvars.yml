@@ -1,0 +1,10 @@
+my_users:
+- username: dan
+  state: CA
+  hair: blonde
+- username: edgar
+  state: OH
+  hair: brown
+- username: fred
+  state: KS
+  hair: bald

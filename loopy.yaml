@@ -1,0 +1,27 @@
+- name: Larnin loopin
+  hosts: planetexpress
+  vars:
+    my_users: 
+    - username: bob
+      state: CA
+      hair: blonde
+    - username: alice
+      state: OH
+      hair: brown
+    - username: charlie
+      state: KS
+      hair: bald
+
+  vars_files:
+  - myvars.yml
+
+  tasks:
+  - name: debug a list of users
+    debug:
+      msg: "{{ item }}"
+    loop: "{{ my_users }}"
+
+  - name: debug a list of users
+    debug:
+      msg: "My user {{ item.username }} has the hair color {{ item.hair }} and is from {{ item.state }}"
+    loop: "{{ my_users }}"

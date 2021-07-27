@@ -22,7 +22,16 @@
     debug:
       msg: "My cat is named {{ cat_name | default('garfield') }}"
 
-
+  - name: manage example apps [figlet, cowsay, bastet]
+    apt:
+      name: "{{ item }}" 
+      state: absent 
+    loop:
+    - figlet
+    - cowsay
+    - bastet
+    become: True
+ 
 
 
 
