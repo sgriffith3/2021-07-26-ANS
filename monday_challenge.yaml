@@ -1,0 +1,28 @@
+- name: Monday Challenge
+  hosts: planetexpress:!centos:!bender
+  vars:
+    example_app_state: absent
+  tasks:
+  - name: manage example apps [figlet, cowsay, bastet]
+    apt:
+      name: 
+      - figlet
+      - cowsay
+      - bastet
+      state: "{{ example_app_state }}"
+    become: True
+    vars:
+      example_app_state: present
+ 
+  - name: print out example_app_state value
+    debug:
+      var: example_app_state
+
+  - name: show off defualt values
+    debug:
+      msg: "My cat is named {{ cat_name | default('garfield') }}"
+
+
+
+
+

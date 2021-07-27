@@ -1,0 +1,10 @@
+---
+- name: Showing off debug and ping
+  hosts: planetexpress
+  tasks:
+  - name: Ping em all
+    ping:
+
+  - name: print function for ansible
+    debug:
+      msg: "Hello world! I am {{ inventory_hostname }} and my IP is {{ ansible_all_ipv4_addresses[0] }}." 
