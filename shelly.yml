@@ -1,0 +1,20 @@
+- name: Using the shell module
+  hosts: planetexpress
+  tasks:
+  - name: list out the home dir with shell
+    shell: 
+      cmd: "echo 'my ipv4 address is: {{ ansible_all_ipv4_addresses[0] }}' > myip.txt"
+    register: shell_out
+
+  - name: list out the home dir with command
+    command: 
+      cmd: "echo 'my ipv4 address is: {{ ansible_all_ipv4_addresses }}' > myip.txt"
+    register: cmd_out
+
+  - name: debug shell_out
+    debug:
+      var: shell_out
+
+  - name: debug cmd_out
+    debug:
+      var: cmd_out    

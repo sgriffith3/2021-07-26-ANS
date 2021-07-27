@@ -1,0 +1,18 @@
+- name: Using the get_url and uri module
+  hosts: planetexpress
+  tasks:
+  - name: Use get_url to download a page
+    get_url:
+      url: "https://labs.alta3.com/projects/ansible/deploy/setup.sh"
+      dest: "/home/{{ ansible_user }}/setup.sh"
+
+  - name: Using uri to retrieve data
+    uri:
+      url: "http://api.open-notify.org/astros.json"
+      return_content: True
+    register: uri_content
+
+  - name: print out uri_content
+    debug:
+      var: uri_content
+

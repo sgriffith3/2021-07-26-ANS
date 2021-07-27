@@ -1,0 +1,8 @@
+- name: Perform a git checkout of the class ansible repo 
+  hosts: planetexpress
+  tasks:
+  - name: git checkout ans repo
+    git:
+      repo: https://github.com/sgriffith3/2021-07-26-ANS.git
+      dest: ~/ans
+

@@ -1,0 +1,8 @@
+- name: Get a package
+  hosts: planetexpress
+  tasks:
+  - name: Download/install the package sl on both Ubuntu and CentOS systems
+    package:
+      name: sl
+      state: present
+    become: True 

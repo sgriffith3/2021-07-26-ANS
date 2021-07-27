@@ -1,0 +1,19 @@
+- name: Copy files to hosts
+  hosts: planetexpress
+  tasks:
+  - name: copy example files out
+    copy:
+      src: ~/hosts.ini
+      dest: hosts.ini
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      mode: "0644"
+
+  - name: insert record of hostvars
+    copy:
+      content: "{{ hostvars[inventory_hostname] }}"
+      dest: "{{ ansible_date_time.date }}-ansible-facts.json"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      mode: "0644"
+
