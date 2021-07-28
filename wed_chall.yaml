@@ -1,0 +1,21 @@
+- name: Wednesday Morning Challenge
+  hosts: planetexpress
+  vars:
+    my_data:
+    - host: bender
+      ip: 10.10.2.3
+    - host: fry
+      ip: 10.10.2.4
+    your_data:
+    - host: zoidberg
+      ip: 10.10.2.5
+    - host: farnsworth
+      ip: 10.10.2.6
+
+  tasks:
+  - name: Push Host IP Config file
+    template:
+      src: host_and_ip.j2
+      dest: ~/host_ips
+    vars:
+      host_ips: "{{ my_data + your_data }}"

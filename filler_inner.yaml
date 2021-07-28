@@ -1,0 +1,31 @@
+- name: Use template to render and push an html file
+  hosts: planetexpress
+  tasks:
+  - name: Using template module
+    template:
+      src: index.html.j2
+      dest: ~/index.html
+    vars:
+      navigation: 
+      - href: "#about"
+        caption: Find out more ABOUT us!
+      - href: "#contact"
+        caption: Call Us!
+      - href: "#home"
+        caption: Take me home country roads
+      a_variable: This is my website. GET it or POST it
+
+  - name: pass in the grades
+    template:
+      src: grades.j2
+      dest: your_grade
+    vars:
+      results:
+      - name: fry
+        score: 44
+      - name: bender
+        score: 12
+      - name: zoidberg
+        score: 95
+      - name: farnsworth
+        score: 88 

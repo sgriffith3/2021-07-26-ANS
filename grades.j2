@@ -1,0 +1,14 @@
+{% for grade in results %} 
+    {% if grade.name == ansible_user %}
+        Let's see how you did, {{ grade.name }}....
+            {{ grade.score }}
+        {% if grade.score >= 90 %}
+                    A!
+        {% elif grade.score > 65 %}
+                    passed
+        {% else %}
+                    You are a failure. Just go home 
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
