@@ -1,0 +1,20 @@
+- name: Make sure packages are up to date
+  package:
+    name:
+    - sl
+    - cowsay
+    state: latest
+  become: True
+
+- name: Make sure bastet is up to date
+  package:
+    name: bastet
+    state: latest
+  become: True
+  when: ansible_distribution == "Ubuntu"
+
+- name: Add in a log entry
+  lineinfile:
+    path: ~/loggy.log
+    line: "{{ ansible_date_time.weekday }} {{ ansible_date_time.date }} {{ ansible_date_time.time }} - Passed Checkup"
+    create: True

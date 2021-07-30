@@ -1,0 +1,25 @@
+- name: playing with handlers
+  hosts: planetexpress:!farnsworth
+  tasks:
+  - name: Copy over an ansible cfg file
+    copy:
+      src: ~/.ansible.cfg
+      dest: new_ansible.cfg
+    notify:
+    - copied
+
+  - name: debug plain message
+    debug:
+      msg: When does this run?
+
+  handlers:
+  - name: debug_on_copy
+    debug:
+      msg: Your File Was Copied Over!!!!
+    listen: copied
+
+  - name: print_out_stuff
+    debug:
+      msg: This is the second handler
+    listen: copied      
+

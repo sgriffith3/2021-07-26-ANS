@@ -1,0 +1,30 @@
+- name: Play with bool
+  hosts: localhost
+  connection: local
+  tasks:
+  - debug: 
+      msg: This ran!
+    tags:
+    - first_task
+    - odd
+
+  - debug: 
+      msg: Time to play!
+    tags:
+    - always
+    - second_task
+    - even
+
+  - name: purposefully fail
+    fail:
+      msg: stop it!
+    tags:
+    - never
+    - odd
+    - failing
+
+  - debug: 
+      msg: Rest Time
+    tags:
+    - last_task
+    - even

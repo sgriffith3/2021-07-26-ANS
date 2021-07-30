@@ -1,0 +1,13 @@
+- name: trying out debug
+  hosts: localhost
+  connection: local
+  tasks:
+  - name: Debug with var
+    debug:
+      msg: "{{ item }}" 
+    loop: "{{ myvar | flatten(levels=1) }}"
+
+  - name: debug with msg
+    debug:
+      msg: "Runtime of the gather_facts was at {{ myvar }}"
+      verbosity: 5

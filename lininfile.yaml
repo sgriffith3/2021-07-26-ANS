@@ -1,0 +1,23 @@
+- name: Learning lineinfile and replace
+  hosts: planetexpress
+  tasks:
+  #- copy:
+  #    src: ~/.ansible.cfg
+  #    dest: ~/ansible.cfg
+  - name: Add second inventory line to file
+    lineinfile:
+      path: ~/ansible.cfg
+      line: inventory = poodlehosts.txt
+
+  - name: Fix inventory line in file
+    lineinfile:
+      path: ~/ansible.cfg
+      line: inventory = server_hosts
+      regexp: "^inventory.*"
+
+  - name: replace all inventory lines
+    replace:
+      path: ~/ansible.cfg
+      regexp: "^inventory.*"
+      replace: inventory = sam/wants/a/break
+

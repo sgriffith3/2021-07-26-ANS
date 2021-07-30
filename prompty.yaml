@@ -1,0 +1,13 @@
+- name: Using vars prompt
+  hosts: "{{ myhosts }}"
+  vars:
+    mypass: poodlesarefluffyandsoarenoodles
+  vars_prompt:
+  - name: myhosts
+    prompt: What hosts are you targeting?
+    private: False
+
+  tasks:
+  - name: Debug a var from various sources
+    debug:
+      msg: "Your super secret password is {{ mypass }}"

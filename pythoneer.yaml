@@ -1,0 +1,14 @@
+- name: Using python methods
+  hosts: localhost
+  connection: local
+  vars:
+    mystr: Potatoes AND tomaTOeS
+  tasks:
+  - debug:
+      msg: "This is my string: {{ mystr }}"
+  - debug:
+      msg: "This is my string: {{ mystr.lower() }}"
+  - debug:
+      msg: "This is my string: {{ mystr.upper() }}"
+  - debug:
+      msg: "This is my string: {{ mystr | lower }}"

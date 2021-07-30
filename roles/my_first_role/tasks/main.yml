@@ -1,0 +1,3 @@
+- name: Example Task using Debug
+  debug:
+    msg: Using a role to call on this!

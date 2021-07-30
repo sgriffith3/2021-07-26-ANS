@@ -7,10 +7,10 @@
     - host: fry
       ip: 10.10.2.4
     your_data:
-    - host: zoidberg
-      ip: 10.10.2.5
-    - host: farnsworth
-      ip: 10.10.2.6
+        - host: zoidberg
+           ip: 10.10.2.5
+        - host: farnsworth
+          ip: 10.10.2.6
 
   tasks:
   - name: Push Host IP Config file

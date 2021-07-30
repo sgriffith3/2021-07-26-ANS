@@ -1,0 +1,4 @@
+- name: Using our first role
+  hosts: planetexpress
+  roles:
+  - my_first_role

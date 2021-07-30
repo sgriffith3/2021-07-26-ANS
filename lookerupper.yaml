@@ -1,0 +1,18 @@
+- name: Using python methods
+  hosts: localhost
+  connection: local
+  vars:
+    file_data: "{{ lookup('file', '/home/student/.ansible.cfg') }}" 
+    pet: "{{ lookup('community.general.random_pet') }}"
+    env_data: "{{ lookup('env', 'SECRET_STUFF') }}" 
+    url_data: "{{ lookup('url', 'https://github.com/sgriffith3.keys', wantlist=True) }}" 
+  tasks:
+  - debug:
+      msg: "This is my file data: {{ file_data }}"
+  - debug:
+      msg: "This is my pet: {{ pet }}"
+  - debug:
+      msg: "This is my url data: {{ url_data }}"
+
+  - debug:
+      msg: "Listen to the env var: {{ env_data }}"

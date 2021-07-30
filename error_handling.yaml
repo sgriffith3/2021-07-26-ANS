@@ -1,0 +1,36 @@
+- name: playing with handlers
+  hosts: planetexpress:!farnsworth
+  tasks:
+  - name: Copy over an ansible cfg file
+    copy:
+      src: ~/.ansible.cfg
+      dest: new_ansible.cfg
+
+  - name: Our First Block
+    block:
+    - name: debug plain message
+      debug:
+        msg: When does this run?
+      failed_when: ansible_user == "bender"
+    - name: debug_on_copy
+      debug:
+        msg: Your File Was Copied Over!!!!
+
+    rescue:
+    - name: rollback
+      debug:
+        msg: rolling back
+    - fail: 
+    - name: save me
+      debug:
+        msg: You have been rescued!
+
+    always:
+    - name: This will always go
+      debug:
+        msg: Updating Internal API
+
+  - name: print_out_stuff
+    debug:
+      msg: This is the second handler
+

@@ -1,0 +1,20 @@
+- name: Play with bool
+  hosts: localhost
+  connection: local
+  vars:
+    dog_name: fido-lollipop
+    sleeping: no
+  tasks:
+  - debug: 
+      msg: This ran!
+    when: dog_name
+
+  - debug: 
+      msg: Time to play!
+    when:
+    - not sleeping | bool
+    - dog_name == "fido"
+
+  - debug: 
+      msg: Rest Time
+    when: (sleeping | bool) or dog_name == "fido-lollipop"

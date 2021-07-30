@@ -1,0 +1,4 @@
+- name: Role Challenge
+  hosts: planetexpress
+  roles:
+  - thursday_checkup

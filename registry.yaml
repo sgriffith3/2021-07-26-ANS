@@ -1,0 +1,16 @@
+- name: playing with the register keyword
+  hosts: planetexpress
+  tasks:
+  - name: See what they've got
+    command: "{{ item }}"
+    loop:
+    - ls ~/
+    - cat loggy.log
+    register: cmd_ls
+
+  - debug:
+      var: cmd_ls
+
+  - debug:
+      msg: "This host has the file loggy.log"
+    when: '"loggy.log" in cmd_ls.results.0.stdout_lines'
